@@ -1,0 +1,22 @@
+INSERT INTO Treatment (TreatmentID, PatientID, DoctorID, TreatmentDate, Diagnosis, Prescription)
+VALUES
+    (1, 1, 5, '2024-03-25 09:00:00', 'Baş ağrısı', 'Parol tablet'),
+    (2, 2, 12, '2024-03-26 10:00:00', 'Yüksek tansiyon', 'Ramipril'),
+    (3, 3, 9, '2024-03-27 11:00:00', 'Kalp ritim bozukluğu', 'Beta bloker'),
+    (4, 4, 17, '2024-03-28 12:00:00', 'Göz enfeksiyonu', 'Göz damlası'),
+    (5, 5, 16, '2024-03-29 13:00:00', 'Diz ağrısı', 'Fizik tedavi'),
+    (6, 6, 13, '2024-03-30 14:00:00', 'Boğaz ağrısı', 'Antibiyotik'),
+    (7, 7, 8, '2024-03-31 15:00:00', 'Sinir sıkışması', 'Fizik tedavi'),
+    (8, 8, 4, '2024-04-01 16:00:00', 'Akciğer enfeksiyonu', 'Antibiyotik'),
+    (9, 9, 15, '2024-04-02 17:00:00', 'İdrar yolu enfeksiyonu', 'Siprofloksasin'),
+    (10, 10, 11, '2024-04-03 18:00:00', 'Yanık', 'Panthenol krem'),
+    (11, 11, 14, '2024-04-04 09:00:00', 'Regl düzensizliği', 'Oral kontraseptif'),
+    (12, 12, 2, '2024-04-05 10:00:00', 'Akne', 'Klindamisin jel'),
+    (13, 13, 19, '2024-04-06 11:00:00', 'Depresyon', 'SSRI'),
+    (14, 14, 18, '2024-04-07 12:00:00', 'Mide ülseri', 'PPI'),
+    (15, 15, 20, '2024-04-08 13:00:00', 'Bağırsak enfeksiyonu', 'Antibiyotik'),
+    (16, 16, 7, '2024-04-09 14:00:00', 'Alerjik reaksiyon', 'Antihistaminik'),
+    (17, 17, 1, '2024-04-10 15:00:00', 'Böbrek taşı', 'Ağrı kesici'),
+    (18, 18, 3, '2024-04-11 16:00:00', 'Kanser', 'Kemoterapi'),
+    (19, 19, 6, '2024-04-12 17:00:00', 'Bel fıtığı', 'Fizik tedavi'),
+    (20, 20, 10, '2024-04-13 18:00:00', 'Anemi', 'Demir takviyesi');

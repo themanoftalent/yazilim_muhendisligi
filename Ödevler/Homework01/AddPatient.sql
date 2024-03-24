@@ -1,0 +1,22 @@
+INSERT INTO Patient (PatientID, Name, Age, Gender, Phone, Address)
+VALUES
+    (1, 'Ayşe Yılmaz', 25, 'Female', '555-111-2222', 'Ankara'),
+    (2, 'Ahmet Kaya', 35, 'Male', '555-222-3333', 'İstanbul'),
+    (3, 'Fatma Demir', 45, 'Female', '555-333-4444', 'İzmir'),
+    (4, 'Mehmet Şahin', 30, 'Male', '555-444-5555', 'Bursa'),
+    (5, 'Zeynep Ak', 50, 'Female', '555-555-6666', 'Adana'),
+    (6, 'Mustafa Korkmaz', 22, 'Male', '555-666-7777', 'Antalya'),
+    (7, 'Emine Yıldız', 40, 'Female', '555-777-8888', 'Diyarbakır'),
+    (8, 'İbrahim Oğuz', 28, 'Male', '555-888-9999', 'Eskişehir'),
+    (9, 'Gizem Can', 55, 'Female', '555-999-0000', 'Gaziantep'),
+    (10, 'Serkan Aksoy', 33, 'Male', '555-000-1111', 'Hatay'),
+    (11, 'Aylin Şimşek', 37, 'Female', '555-111-2222', 'İzmit'),
+    (12, 'Murat Karagöz', 42, 'Male', '555-222-3333', 'Konya'),
+    (13, 'Elif Öztürk', 29, 'Female', '555-333-4444', 'Malatya'),
+    (14, 'Yusuf Özdemir', 48, 'Male', '555-444-5555', 'Manisa'),
+    (15, 'Gamze Çelik', 26, 'Female', '555-555-6666', 'Muğla'),
+    (16, 'Umut Ay', 38, 'Male', '555-666-7777', 'Trabzon'),
+    (17, 'Pınar Şahin', 32, 'Female', '555-777-8888', 'Van'),
+    (18, 'Deniz Kaya', 44, 'Male', '555-888-9999', 'Şanlıurfa'),
+    (19, 'Şeyma Yılmaz', 27, 'Female', '555-999-0000', 'Ordu'),
+    (20, 'Canan Korkmaz', 39, 'Female', '555-000-1111', 'Samsun');

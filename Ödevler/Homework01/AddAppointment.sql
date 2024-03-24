@@ -1,0 +1,22 @@
+INSERT INTO Appointment (AppointmentID, PatientID, DoctorID, AppointmentDateTime, Description)
+VALUES
+    (1, 10, 5, '2024-03-25 09:00:00', 'Genel muayene'),
+    (2, 4, 12, '2024-03-26 10:00:00', 'Check-up'),
+    (3, 3, 9, '2024-03-27 11:00:00', 'EKG ve kontrol'),
+    (4, 2, 17, '2024-03-28 12:00:00', 'Göz muayenesi'),
+    (5, 7, 16, '2024-03-29 13:00:00', 'Ortopedi kontrolü'),
+    (6, 20, 13, '2024-03-30 14:00:00', 'KBB muayenesi'),
+    (7, 12, 8, '2024-03-31 15:00:00', 'Nörolojik muayene'),
+    (8, 6, 4, '2024-04-01 16:00:00', 'Röntgen çektirme'),
+    (9, 8, 15, '2024-04-02 17:00:00', 'Üroloji kontrolü'),
+    (10, 5, 11, '2024-04-03 18:00:00', 'Plastik cerrahi danışmanlığı'),
+    (11, 15, 14, '2024-04-04 09:00:00', 'Kadın doğum muayenesi'),
+    (12, 19, 2, '2024-04-05 10:00:00', 'Dermatolojik kontrol'),
+    (13, 11, 19, '2024-04-06 11:00:00', 'Psikiyatrik değerlendirme'),
+    (14, 18, 18, '2024-04-07 12:00:00', 'İç hastalıkları muayenesi'),
+    (15, 13, 20, '2024-04-08 13:00:00', 'Gastroenterolojik kontrol'),
+    (16, 16, 7, '2024-04-09 14:00:00', 'Pediatri muayenesi'),
+    (17, 1, 1, '2024-04-10 15:00:00', 'Nefrolojik kontrol'),
+    (18, 14, 3, '2024-04-11 16:00:00', 'Onkolojik muayene'),
+    (19, 17, 6, '2024-04-12 17:00:00', 'Fizik tedavi randevusu'),
+    (20, 9, 10, '2024-04-13 18:00:00', 'Hematolojik muayene');

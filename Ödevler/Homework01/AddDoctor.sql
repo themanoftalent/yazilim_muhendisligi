@@ -1,0 +1,22 @@
+INSERT INTO Doctor (DoctorID, Name, Department, Phone)
+VALUES
+    (1, 'Dr. Ahmet Yılmaz', 'Genel Cerrahi', '555-123-4567'),
+    (2, 'Dr. Ayşe Kaya', 'Dahiliye', '555-234-5678'),
+    (3, 'Dr. Mehmet Şahin', 'Kardiyoloji', '555-345-6789'),
+    (4, 'Dr. Fatma Demir', 'Göz Hastalıkları', '555-456-7890'),
+    (5, 'Dr. Mustafa Ak', 'Ortopedi', '555-567-8901'),
+    (6, 'Dr. Zeynep Altın', 'Kulak Burun Boğaz', '555-678-9012'),
+    (7, 'Dr. Emre Öztürk', 'Nöroloji', '555-789-0123'),
+    (8, 'Dr. Elif Çelik', 'Radyoloji', '555-890-1234'),
+    (9, 'Dr. Ali Karadeniz', 'Üroloji', '555-901-2345'),
+    (10, 'Dr. Aylin Yıldız', 'Plastik Cerrahi', '555-012-3456'),
+    (11, 'Dr. İbrahim Oğuz', 'Kadın Hastalıkları ve Doğum', '555-123-4567'),
+    (12, 'Dr. Nalan Özdemir', 'Dermatoloji', '555-234-5678'),
+    (13, 'Dr. Murat Yılmaz', 'Psikiyatri', '555-345-6789'),
+    (14, 'Dr. Serap Korkmaz', 'İç Hastalıkları', '555-456-7890'),
+    (15, 'Dr. Hakan Karagöz', 'Gastroenteroloji', '555-567-8901'),
+    (16, 'Dr. Seda Şimşek', 'Pediatri', '555-678-9012'),
+    (17, 'Dr. Umut Demir', 'Nefroloji', '555-789-0123'),
+    (18, 'Dr. Pınar Can', 'Onkoloji', '555-890-1234'),
+    (19, 'Dr. Yusuf Aksoy', 'Fizik Tedavi ve Rehabilitasyon', '555-901-2345'),
+    (20, 'Dr. Gamze Ay', 'Hematoloji', '555-012-3456');
