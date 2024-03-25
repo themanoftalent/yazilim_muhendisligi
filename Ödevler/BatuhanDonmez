@@ -1,0 +1,81 @@
+---TANER ÇUHADAR 2111502016
+---BATUHAN DÖNMEZ 2111502014
+
+
+
+
+
+CREATE TABLE ogrenciler (
+    ogrenci_id NUMBER PRIMARY KEY,
+    ad VARCHAR2(50),
+    soyad VARCHAR2(50),
+    dogum_tarihi DATE,
+    cinsiyet CHAR(1),
+    sinif VARCHAR2(10),
+    adres VARCHAR2(100),
+    telefon_numarasi VARCHAR2(20)
+);
+
+ 
+CREATE TABLE ogretmenler (
+    ogretmen_id NUMBER PRIMARY KEY,
+    ad VARCHAR2(50),
+    soyad VARCHAR2(50),
+    dogum_tarihi DATE,
+    cinsiyet CHAR(1),
+    ise_giris_tarihi DATE,
+    ogrettigi_bolum VARCHAR2(50)
+);
+
+
+CREATE TABLE dersler (
+    ders_id NUMBER PRIMARY KEY,
+    ders_adi VARCHAR2(100),
+    ogretmen_id NUMBER REFERENCES ogretmenler(ogretmen_id),
+    oda_numarasi VARCHAR2(20),
+    program VARCHAR2(100)
+);
+
+
+CREATE TABLE siniflar (
+    sinif_id NUMBER PRIMARY KEY,
+    sinif_adi VARCHAR2(50),
+    ogretmen_id NUMBER REFERENCES ogretmenler(ogretmen_id)
+    
+);
+
+
+
+
+CREATE TABLE sinavlar (
+    sinav_id NUMBER PRIMARY KEY,
+    ders_id NUMBER REFERENCES dersler(ders_id),
+    sinav_tarihi DATE,
+    sinav_turu VARCHAR2(50)
+);
+
+
+CREATE TABLE ogrenci_dersleri (
+    ogrenci_ders_id NUMBER PRIMARY KEY,
+    ogrenci_id NUMBER REFERENCES ogrenciler(ogrenci_id),
+    ders_id NUMBER REFERENCES dersler(ders_id),
+    nott VARCHAR2(2) 
+);
+
+
+CREATE TABLE notlar (
+    not_id NUMBER PRIMARY KEY,
+    ogrenci_id NUMBER REFERENCES ogrenciler(ogrenci_id),
+    ders_id NUMBER REFERENCES dersler(ders_id),
+    sinav_id NUMBER REFERENCES sinavlar(sinav_id),
+    nott VARCHAR2(2)
+);
+
+
+ CREATE TABLE fakulteler(
+    fakulte_id NUMBER PRIMARY KEY,
+    fakulte_adi VARCHAR2(100) REFERENCES siniflar(sinif_adi),
+    dekan_ad VARCHAR2(50),
+    dekan_soyad VARCHAR2(50),
+    hoca_id number REFERENCES ogretmenler(ogretmen_id)
+);
