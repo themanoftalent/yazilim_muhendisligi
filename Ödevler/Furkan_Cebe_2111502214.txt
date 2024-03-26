@@ -1,0 +1,130 @@
+Sanatçı Tablosu:
+CREATE TABLE Sanatçı(
+SanatçıAdı varchar(15),
+SanatçıSoyadı varchar(15),
+MüzikTürü varchar(15),
+DoğumTarihi date,
+Boyu int,
+PRIMARY KEY (SanatçıAdı, SanatçıSoyadı, DoğumTarihi));
+
+MüzikTürü Tablosu:
+CREATE TABLE MüzikTürü(
+TürünAdı varchar(15),
+TürünTercihEdilmeYüzdesi int,
+TürüTercihEdenlerinYaşAralığı varchar(15),
+PRIMARY KEY (TürünAdı));
+
+YaşAralığı Tablosu:
+CREATE TABLE YaşAralığı(
+YaşAralığı varchar(15),
+TürAdı varchar(15),
+Bölgesi varchar(40),
+CinsiyetOranı varchar(15),
+PRIMARY KEY (YaşAralığı));
+
+
+Veriler
+Sanatçı Verileri:
+INSERT INTO Sanatçı VALUES ('Mustafa', 'Ceceli', 'Pop', TO_DATE ('02-11-1980', 'DD-MM-YYYY'), 174);
+INSERT INTO Sanatçı VALUES ('Sinan', 'Akçıl', 'Pop', TO_DATE ('20-05-1982', 'DD-MM-YYYY'), 178);
+INSERT INTO Sanatçı VALUES ('Ahmet', 'Kaya', 'Arabesk', TO_DATE ('28-10-1957', 'DD-MM-YYYY'), 180);
+INSERT INTO Sanatçı VALUES ('Demet', 'Akalın', 'Pop', TO_DATE ('23-04-1972', 'DD-MM-YYYY'), 173);
+INSERT INTO Sanatçı VALUES ('Ali', 'Kınık', 'Türk Halk', TO_DATE ('26-09-1974', 'DD-MM-YYYY'), 175);
+INSERT INTO Sanatçı VALUES ('Alperen', 'Kekilli', 'Türk Halk', TO_DATE ('01-01-1980', 'DD-MM-YYYY'), 173);
+INSERT INTO Sanatçı VALUES ('Orhan', 'Gencebay', 'Arabesk', TO_DATE ('04-08-1944', 'DD-MM-YYYY'), 173);
+INSERT INTO Sanatçı VALUES ('Selda', 'Bağcan', 'Türk Halk', TO_DATE ('14-12-1948', 'DD-MM-YYYY'), 157);
+INSERT INTO Sanatçı VALUES ('Cenk', 'Baş', 'Pop', TO_DATE ('14-04-1998', 'DD-MM-YYYY'), 186);
+INSERT INTO Sanatçı VALUES ('Abdullah', 'Evgi', 'Rap', TO_DATE ('16-02-1991', 'DD-MM-YYYY'), 171);
+INSERT INTO Sanatçı VALUES ('Ahmet', 'Şafak', 'Türk Halk', TO_DATE ('08-01-1962', 'DD-MM-YYYY'), 170);
+INSERT INTO Sanatçı VALUES ('Sibel', 'Can', 'Pop', TO_DATE ('01-08-1970', 'DD-MM-YYYY'), 169);
+INSERT INTO Sanatçı VALUES ('Murat', 'Belet', 'İlahi', TO_DATE ('13-04-1985', 'DD-MM-YYYY'), 175);
+INSERT INTO Sanatçı VALUES ('Muazzez', 'Ersoy', 'Arabesk', TO_DATE ('09-08-1958', 'DD-MM-YYYY'), 161);
+INSERT INTO Sanatçı VALUES ('Mustafa', 'Yıldızdoğan', 'Arabesk', TO_DATE ('10-05-1966', 'DD-MM-YYYY'), 175);
+INSERT INTO Sanatçı VALUES ('Neşet', 'Ertaş', 'Türk Halk', TO_DATE ('01-01-1938', 'DD-MM-YYYY'), 175);
+INSERT INTO Sanatçı VALUES ('Yasemin', 'Yıldız', 'Türk Halk', TO_DATE ('01-01-1984', 'DD-MM-YYYY'), 165);
+
+
+MüzikTürü Verileri:
+INSERT INTO MüzikTürü VALUES ('Pop', 40, '20-35');
+INSERT INTO MüzikTürü VALUES ('Arabesk', 20, '25-50');
+INSERT INTO MüzikTürü VALUES ('Türk Halk', 20, '20-40');
+INSERT INTO MüzikTürü VALUES ('Rap', 10, '15-25');
+INSERT INTO MüzikTürü VALUES ('İlahi', 10, '35-50');
+
+YaşAralığı Verileri:
+INSERT INTO YaşAralığı VALUES ('20-35', 'Pop', 'Marmara Bölgesi', '45/55');
+INSERT INTO YaşAralığı VALUES ('25-50', 'Arabesk', 'Marmara Bölgesi', '65/35');
+INSERT INTO YaşAralığı VALUES ('20-40', 'Türk Halk', 'Karadeniz Bölgesi', '60/40');
+INSERT INTO YaşAralığı VALUES ('15-25', 'Rap', 'Ege Bölgesi', '60/40');
+INSERT INTO YaşAralığı VALUES ('35-50', 'İlahi', 'İç Anadolu Bölgesi', '50/50');
+
+Sorgular
+
+Sanatçılar tablosundaki tüm veriler:
+SELECT *
+FROM Sanatçı;
+
+
+MüzikTürü tablosundaki tüm veriler:
+SELECT *
+FROM MüzikTürü;
+
+
+YaşAralığı tablosundaki tüm veriler:
+SELECT *
+FROM YaşAralığı;
+
+
+Pop müzik türünü seçen sanatçıların bilgileri:
+SELECT *
+FROM Sanatçı
+WHERE MüzikTürü= 'Pop';
+
+
+Sanatçıların tercih ettiği müzik türüne göre insanlar tarafından tercih edilme yüzdeleri:
+SELECT s.SanatçıAdı, s.SanatçıSoyadı, s.MüzikTürü, m.TürünTercihEdilmeYüzdesi AS "Tercih Edilme Yüzdesi (%)"
+FROM Sanatçı s
+INNER JOIN MüzikTürü m
+ON s.MüzikTürü = m.TürünAdı
+ORDER BY TürünTercihEdilmeYüzdesi DESC;
+
+
+Adı Mustafa olan sanatçılar:
+SELECT *
+FROM Sanatçı
+WHERE SanatçıAdı = 'Mustafa';
+
+
+Sanatçıların arasından ismi M harfi ile başlayanlar:
+SELECT *
+FROM Sanatçı
+WHERE SanatçıAdı LIKE 'S%';
+
+
+Müzik Türü Türk Halk olan sanatçıların takipçilerinin yaş aralığı ve cinsiyet oranı bilgileri:
+SELECT s.SanatçıAdı, s.SanatçıSoyadı, s.MüzikTürü, MAX(y.YaşAralığı) AS "YaşAralığı", MAX(y.CinsiyetOranı) AS " CinsiyetOranı(E/K)"
+FROM Sanatçı s
+JOIN YaşAralığı y
+ON s.MüzikTürü = y.TürAdı
+WHERE s.MüzikTürü = 'Türk Halk'
+GROUP BY s.SanatçıAdı, s.SanatçıSoyadı, s.MüzikTürü;
+
+
+Boyu 165 ile 180 arası olan sanatçılar
+SELECT s.SanatçıAdı, s.SanatçıSoyadı, s.Boyu
+FROM Sanatçı s
+WHERE s.Boyu BETWEEN 165 AND 180
+ORDER BY Boyu ASC;
+
+
+Sanatçılar arasında en yaşlıdan en gencine kadar olan sıralama:
+SELECT s.SanatçıAdı, s.SanatçıSoyadı, s.DoğumTarihi
+FROM Sanatçı s
+ORDER BY DoğumTarihi ASC;
+
+
+En çok Marmara Bölgesinde dinlenenler:
+SELECT s.SanatçıAdı, s.SanatçıSoyadı, s.DoğumTarihi, y.Bölgesi
+FROM Sanatçı s, YaşAralığı y
+WHERE s.MüzikTürü = y.TürAdı
+    AND y.Bölgesi = 'Marmara Bölgesi';
