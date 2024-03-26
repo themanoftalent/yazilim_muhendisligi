@@ -1,0 +1,211 @@
+------------------------------ CREATE DATABASE ------------------------------
+
+CREATE DATABASE DbSchool;
+GO
+
+USE dbSchool
+GO
+
+
+------------------------------ CREATE TABLES ------------------------------
+
+CREATE TABLE tbl_class
+(
+	Id	tinyint			NOT NULL PRIMARY KEY,
+	Name	varchar(100)	NOT NULL
+)
+GO
+
+CREATE TABLE tbl_lesson
+(
+	Id	tinyint		NOT NULL PRIMARY KEY,
+	Name	varchar(100)	NOT NULL,
+	ClassId tinyint		FOREIGN KEY REFERENCES tbl_class(Id)
+)
+GO
+
+CREATE TABLE tbl_department
+(
+	Id	tinyint		NOT NULL PRIMARY KEY,
+	Name	varchar(100)	NOT NULL
+)
+GO
+
+CREATE TABLE tbl_teacher
+(
+	Id		tinyint		NOT NULL PRIMARY KEY,
+	Name		varchar(50)	NOT NULL,
+	Surname		varchar(50)	NOT NULL,
+	DepartmentId	tinyint		FOREIGN KEY	REFERENCES tbl_department(Id)
+)
+GO
+
+CREATE TABLE tbl_student
+(
+	Id		tinyint		NOT NULL PRIMARY KEY,
+	Name		varchar(50)	NOT NULL,
+	Surname		varchar(50)	NOT NULL,
+	SchoolNo	varchar(50)	NOT NULL,
+	Phone		varchar(10)	NOT NULL,
+	Email		varchar(100)	NOT NULL,
+	DepartmentId	tinyint		FOREIGN KEY REFERENCES tbl_department(Id)
+)
+GO
+
+
+CREATE TABLE tbl_classAndDepartment
+(
+	ClassId		tinyint		FOREIGN KEY REFERENCES tbl_class(Id),
+	DepartmentId	tinyint		FOREIGN KEY REFERENCES tbl_class(Id),
+)
+GO
+
+CREATE TABLE tbl_lessonAndDepartment
+(
+	LessonId	tinyint		FOREIGN KEY REFERENCES tbl_lesson(Id),
+	DepartmentId	tinyint		FOREIGN KEY REFERENCES tbl_department(Id),
+)
+GO
+
+CREATE TABLE tbl_teacherAndStudent
+(
+	TeacherId	tinyint		FOREIGN KEY REFERENCES tbl_teacher(Id),
+	StudentId	tinyint		FOREIGN KEY REFERENCES tbl_student(Id),
+)
+GO
+
+CREATE TABLE tbl_lessonAndStudent
+(
+	LessonId	tinyint		FOREIGN KEY REFERENCES tbl_lesson(Id),
+	StudentId	tinyint		FOREIGN KEY REFERENCES tbl_student(Id),
+)
+GO
+
+
+------------------------------ POPULATE TABLES ------------------------------
+
+INSERT INTO tbl_class
+		(Id,
+		Name)
+VALUES		(1,'BIL101'),
+		(2,'BIL202'),
+		(3,'BIL303'),
+		(4,'BIL404');
+			
+INSERT INTO	tbl_department
+		(Id,
+		Name)
+VALUES		(1, 'Bilgisayar Mühendisliği'),
+		(2, 'Yazılım Mühendisliği'),
+		(3, 'Makine Mühendisliği');
+
+INSERT INTO	tbl_lesson
+		(Id,
+		Name,
+		ClassId)
+VALUES		(1, 'Yazılım Mühendisliği', 1),
+		(2, 'Bilgisayar Ağları', 2),
+		(3, 'Solid Prensipleri', 3),
+		(4, 'Kinetik Enerji', 2),
+		(5, 'Karbon Fiber Kaplama', 3),
+		(6, 'XXX Theory', 4),
+		(7, 'XXX Method', 4),
+		(8, 'XXX Geometry', 1);
+
+INSERT INTO	tbl_teacher
+		(Id,
+		Name,
+		Surname,
+		DepartmentId)
+VALUES		(1, 'Mehmet Akif', 'Çifçi', 1),
+		(2, 'Selvi', 'Gençay', 2),
+		(3, 'Ahmet', 'Tosun', 3);
+
+INSERT INTO	tbl_student
+		(Id,
+		Name,
+		Surname,
+		SchoolNo,
+		Phone,
+		Email,
+		DepartmentId)
+VALUES		(1, 'Mert', 'Akdemir', '2311502281', '5112223344', 'mert@gmail.com', 1),
+		(2, 'Serhat', 'Sarı', '2311504684', '5112221155', 'serhat@gmail.com', 1),
+		(3, 'Duygu', 'Kan', '2311501684', '5112227766', 'duygu@gmail.com', 1);
+
+INSERT INTO	tbl_classAndDepartment
+		(ClassId,
+		DepartmentId)
+VALUES		(1, 1),
+		(1, 2),
+		(1, 3),
+		(2, 1),
+		(2, 2),
+		(3, 2),
+		(3, 3),
+		(4, 3);
+
+INSERT INTO	tbl_lessonAndDepartment
+		(LessonId,
+		DepartmentId)
+VALUES		(1, 1),
+		(1, 2),
+		(2, 1),
+		(3, 1),
+		(3, 2),
+		(4, 3),
+		(4, 3),
+		(5, 1),
+		(5, 3),
+		(6, 1),
+		(7, 2),
+		(8, 3);
+
+INSERT INTO	tbl_lessonAndStudent
+			(LessonId,
+			StudentId)
+VALUES		(1, 1),
+		(1, 2),
+		(1, 3),
+		(2, 2),
+		(2, 3),
+		(3, 1),
+		(4, 1),
+		(4, 2),
+		(4, 3),
+		(5, 1),
+		(5, 3),
+		(6, 2),
+		(6, 1),
+		(7, 2),
+		(7, 3),
+		(8, 1);
+
+INSERT INTO	tbl_teacherAndStudent
+		(TeacherId,
+		StudentId)
+VALUES		(1, 1),
+		(1, 2),
+		(1, 3),
+		(2, 2),
+		(2, 3),
+		(3, 1),
+		(3, 3);
+GO
+
+
+SELECT * FROM tbl_class
+SELECT * FROM tbl_department
+SELECT * FROM tbl_lesson
+SELECT * FROM tbl_teacher
+SELECT * FROM tbl_student
+SELECT * FROM tbl_classAndDepartment
+SELECT * FROM tbl_lessonAndDepartment
+SELECT * FROM tbl_lessonAndStudent
+SELECT * FROM tbl_teacherAndStudent
+
+
+
+--------------------------
+MERT AKDEMİR   2311502281-
+--------------------------
