@@ -1,0 +1,7 @@
+2111502007 - Can Batuhan Solmuş
+201502024 - Ümit Başar Ceyhan
+
+// Bandırma Onyedi Eylül Üniversitesi 
+// Yazılım Mühendisliği (Mehmet Akif Çifci)
+// SQL Ödevi
+

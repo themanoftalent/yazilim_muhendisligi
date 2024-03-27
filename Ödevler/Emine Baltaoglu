@@ -1,0 +1,102 @@
+WATERFALL YONTEMINI KULLANARAK ORACLE SQL'DE OKUL VERİ TABANI OLUSTURMA
+EMİNE BALTAOGLU - 201502058
+OMER FURKAN ALTUNTAS - 201502037
+
+
+Waterfall yöntemi, adım adım ilerleyen ve her aşamada belirli bir sonuç elde edilene kadar bir sonraki adıma geçmeyi gerektiren bir geliştirme metodolojisidir.
+
+Waterfall yöntemine göre kullanarak adım adım tabloları oluşturmak için izlenecek adımlar şöyledir:
+
+1. İhtiyaçları Belirleme:
+Bu aşamada, mevcut SQL kodlarına bakarak hangi tabloların oluşturulması gerektiğini, her tablonun hangi sütunlara sahip olması gerektiğini ve tablolar arasındaki ilişkileri belirledik.
+
+2. Tabloları Oluşturma:
+Her tablonun oluşturulması için gerekli SQL komutlarını oluşturduk. Bu adımda KISI, BOLUM, DERS, GOREV, PERSONEL ve OGRENCI tablolarını oluşturduk.
+
+3. Tablolar Arasındaki İlişkileri Tanımlama:
+Oluşturduğumuz SQL kodlarındaki FOREIGN KEY kısıtlamalarını kullanarak tablolar arasındaki ilişkileri tamamladık. Bu adımda tablolar arasındaki ilişkileri oluşturarak veri bütünlüğünü sağlamış olduk. Oluşturduğumuz kodlar aşağıdadır.
+(EK-1)
+
+4. Tabloları Test Etme:
+Oluşturulan tabloları test ettik. Veri tabanına veri ekleyip , güncelledik ve sorgular çalıştırarak beklenen sonuçları elde edip etmediğimizi kontrol ettik. (Ek-2)
+
+5. Dokümantasyon ve Bakım:
+Ürün müşteriye teslim edilip ve kullanıldığı aşamadır. Sorunlar ortaya çıktıkça, ekibinizin düzeltme ekleri oluşturması gerekebilir ve bunları gidermek için güncellemeler yapabilir. Yine, büyük sorunlar birinci aşamaya dönüşü gerektirebilir. 
+
+
+
+
+
+
+
+
+Ek-1
+CREATE TABLE KISI (
+    TC NUMBER NOT NULL,
+    AD VARCHAR2(50) NOT NULL,
+    SOYAD VARCHAR2(50) NOT NULL,
+    PRIMARY KEY (TC),
+);
+
+CREATE TABLE BOLUM (
+    BOLUM_ID NUMBER NOT NULL,
+    BOLUM_AD VARCHAR2(50) NOT NULL,
+    PRIMARY KEY (BOLUM_ID),
+    UNIQUE (BOLUM_ID)
+);
+
+CREATE TABLE DERS (
+    DERS_ID NUMBER NOT NULL,
+    BOLUM_ID NUMBER NOT NULL,
+    DERS_AD VARCHAR2(50) NOT NULL,
+    PERSONEL_ID VARCHAR2(5) NOT NULL,
+    PRIMARY KEY (DERS_ID),
+    FOREIGN KEY (BOLUM_ID) REFERENCES BOLUM(BOLUM_ID),
+    FOREIGN KEY (PERSONEL_ID) REFERENCES PERSONEL(PERSONEL_ID)
+);
+
+CREATE TABLE GOREV (
+    GOREV_ID NUMBER NOT NULL,
+    GOREV_AD VARCHAR2(50) NOT NULL,
+    PRIMARY KEY (GOREV_ID)
+);
+ 
+CREATE TABLE PERSONEL (
+    PERSONEL_ID VARCHAR2(5) NOT NULL,
+    KISI_ID NUMBER NOT NULL,
+    BOLUM_ID NUMBER NOT NULL,
+    GOREV_ID NUMBER NOT NULL,
+    PRIMARY KEY (PERSONEL_ID),
+    FOREIGN KEY (KISI_ID) REFERENCES KISI(TC),
+    FOREIGN KEY (BOLUM_ID) REFERENCES BOLUM(BOLUM_ID),
+    FOREIGN KEY (GOREV_ID) REFERENCES GOREV(GOREV_ID)
+);
+
+CREATE TABLE OGRENCI (
+    OGRENCI_ID NUMBER NOT NULL,
+    KISI_ID NUMBER NOT NULL,
+    BOLUM_ID NUMBER NOT NULL,
+    PRIMARY KEY (OGRENCI_ID),
+    FOREIGN KEY (KISI_ID) REFERENCES KISI(TC),
+    FOREIGN KEY (BOLUM_ID) REFERENCES BOLUM(BOLUM_ID)
+);
+
+
+
+
+Ek-2 
+SELECT * FROM DERS WHERE BOLUM_ID = [Bölüm_ID];
+
+SELECT * FROM PERSONEL WHERE GOREV_ID = [Görev_ID];
+
+SELECT * FROM OGRENCI WHERE KISI_ID = [Kişi_ID];
+
+SELECT BOLUM_AD FROM BOLUM 
+
+WHERE BOLUM_ID = (SELECT BOLUM_ID FROM DERS WHERE DERS_ID = [Ders_ID]);
+
+SELECT BOLUM.BOLUM_AD, GOREV.GOREV_AD 
+FROM PERSONEL 
+JOIN BOLUM ON PERSONEL.BOLUM_ID = BOLUM.BOLUM_ID 
+JOIN GOREV ON PERSONEL.GOREV_ID = GOREV.GOREV_ID 
+WHERE PERSONEL.KISI_ID = [Kişi_ID];

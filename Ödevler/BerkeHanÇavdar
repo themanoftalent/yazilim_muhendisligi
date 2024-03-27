@@ -1,0 +1,101 @@
+-- Fakulte tablosu
+CREATE TABLE Fakulte (
+    FakulteID INT PRIMARY KEY,
+    FakulteAdi VARCHAR(50)
+);
+
+-- Bolum tablosu
+CREATE TABLE Bolum (
+    BolumID INT PRIMARY KEY,
+    BolumAdi VARCHAR(50),
+    FakulteID INT,
+    FOREIGN KEY (FakulteID) REFERENCES Fakulte(FakulteID)
+);
+
+-- Ogrenci tablosu
+CREATE TABLE Ogrenci (
+    OgrenciID INT PRIMARY KEY,
+    OgrenciNo INT,
+    Ad VARCHAR(50),
+    Soyad VARCHAR(50),
+    BolumID INT,
+    NotOrtalamasi DECIMAL(3,2),
+    FOREIGN KEY (BolumID) REFERENCES Bolum(BolumID)
+);
+
+-- Ogretmen tablosu
+CREATE TABLE Ogretmen (
+    OgretmenID INT PRIMARY KEY,
+    Ad VARCHAR(50),
+    Soyad VARCHAR(50),
+    FakulteID INT,
+    BolumID INT, 
+    FOREIGN KEY (FakulteID) REFERENCES Fakulte(FakulteID),
+    FOREIGN KEY (BolumID) REFERENCES Bolum(BolumID) 
+);
+
+-- Fakulteler
+INSERT INTO Fakulte (FakulteID, FakulteAdi) VALUES
+(1, 'Mühendislik Fakültesi'),
+(2, 'Fen Fakültesi'),
+(3, 'Edebiyat Fakültesi');
+
+-- Bolumler
+INSERT INTO Bolum (BolumID, BolumAdi, FakulteID) VALUES
+(1, 'Bilgisayar Mühendisliği', 1),
+(2, 'Elektrik Mühendisliği', 1),
+(3, 'Makine Mühendisliği', 1),
+(4, 'Fizik', 2),
+(5, 'Kimya', 2),
+(6, 'Biyoloji', 2),
+(7, 'Türk Dili ve Edebiyatı', 3),
+(8, 'Tarih', 3),
+(9, 'Psikoloji', 3);
+
+-- Ogrenciler
+INSERT INTO Ogrenci (OgrenciID, OgrenciNo, Ad, Soyad, BolumID, NotOrtalamasi) VALUES
+(1, 1001, 'Ali', 'Yılmaz', 1, 3.50),
+(2, 1002, 'Ayşe', 'Demir', 1, 3.75),
+(3, 1003, 'Ahmet', 'Kaya', 1, 3.90),
+(4, 1004, 'Fatma', 'Aydın', 1, 3.25),
+(5, 1005, 'Mehmet', 'Çelik', 1, 3.60),
+(6, 1006, 'Zeynep', 'Yılmaz', 2, 3.80),
+(7, 1007, 'Mustafa', 'Demir', 2, 3.40),
+(8, 1008, 'Selin', 'Kaya', 2, 3.65),
+(9, 1009, 'Özgür', 'Aydın', 2, 3.55),
+(10, 1010, 'Ceren', 'Çelik', 2, 3.70),
+(11, 1011, 'Deniz', 'Yılmaz', 3, 3.45),
+(12, 1012, 'Cem', 'Demir', 3, 3.55),
+(13, 1013, 'Nazlı', 'Kaya', 3, 3.75),
+(14, 1014, 'Kemal', 'Aydın', 3, 3.80),
+(15, 1015, 'İrem', 'Çelik', 3, 3.65),
+(16, 1016, 'Ali', 'Yıldırım', 4, 3.60),
+(17, 1017, 'Merve', 'Öztürk', 4, 3.75),
+(18, 1018, 'Hasan', 'Güneş', 4, 3.90),
+(19, 1019, 'Zehra', 'Kara', 4, 3.25),
+(20, 1020, 'Emre', 'Şahin', 4, 3.60),
+(21, 1021, 'Aylin', 'Yıldız', 5, 3.80),
+(22, 1022, 'Mehmet', 'Koç', 5, 3.40),
+(23, 1023, 'Sibel', 'Doğan', 5, 3.65),
+(24, 1024, 'Ercan', 'Uçar', 5, 3.55),
+(25, 1025, 'Hilal', 'Kurt', 5, 3.70),
+(26, 1026, 'Ahmet', 'Aksoy', 6, 3.45),
+(27, 1027, 'Elif', 'Arslan', 6, 3.55),
+(28, 1028, 'Yasin', 'Kaya', 6, 3.75),
+(29, 1029, 'Seda', 'Güler', 6, 3.80),
+(30, 1030, 'Mustafa', 'Turan', 6, 3.65),
+(31, 1031, 'Deniz', 'Aydın', 7, 3.60),
+(32, 1032, 'Cemal', 'Koç', 7, 3.75),
+(33, 1033, 'Aslı', 'Yıldız', 7, 3.90),
+(34, 1034, 'Murat', 'Güneş', 7, 3.25),
+(35, 1035, 'Selin', 'Aksoy', 7, 3.60),
+(36, 1036, 'Yusuf', 'Arslan', 8, 3.80),
+(37, 1037, 'Zeynep', 'Yılmaz', 8, 3.40),
+(38, 1038, 'Emir', 'Doğan', 8, 3.65),
+(39, 1039, 'Gizem', 'Uçar', 8, 3.55),
+(40, 1040, 'Can', 'Kurt', 8, 3.70),
+(41, 1041, 'Fatma', 'Aksoy', 9, 3.45),
+(42, 1042, 'Ahmet', 'Arslan', 9, 3.55),
+(43, 1043, 'Elif', 'Yılmaz', 9, 3.75),
+(44, 1044, 'Özgür', 'Güler', 9, 3.80),
+(45, 1045, 'Esra', 'Turan', 9, 3.65);

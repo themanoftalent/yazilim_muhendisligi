@@ -1,0 +1,28 @@
+
+insert into Teshis (HastaTC,Teshis)
+values
+('12345678912','Kalp Yetmezliği'),
+('23456789126','Sedef'),
+('34567891234','Migren'),
+('45678912344','Osteoartrit'),
+('56789123456','Diyabet'),
+('67891234568','Aritmi'),
+('78912345678','Ürtiker'),
+('89123456786','Epilepsi'),
+('91234567890','Bel Fıtığı'),
+('34191217212','Astım'),
+('11234567892','Hipertansiyon'),
+('11223456784','Rosa'),
+('25634789148','MS'),
+('78451296348','Tendon Kopması'),
+('89645210342','Romatizma'),
+('65823147954','Kalp Yetmezliği'),
+('78246315902','Dermatit'),
+('12345678912','Parkinson'),
+('32015428622','Tendinit'),
+('52130497658','KOAH'),
+('85631792450','KHK'),
+('69482351784','Vitiligo'),
+('91283468248','Nöropati'),
+('10234896756','Romatoit Artrit'),
+('35647921080','Kronik Böbrek Hastalığı')

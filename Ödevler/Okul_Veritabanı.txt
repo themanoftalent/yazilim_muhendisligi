@@ -1,0 +1,31 @@
+CREATE TABLE Ogrenciler (
+    OgrenciID INT PRIMARY KEY,
+    Ad VARCHAR(50),
+    Soyad VARCHAR(50),
+    DogumTarihi DATE
+);
+
+CREATE TABLE Ogretmenler (
+    OgretmenID INT PRIMARY KEY,
+    Ad VARCHAR(50),
+    Soyad VARCHAR(50),
+    UzmanlikAlanı VARCHAR(100)
+);
+
+CREATE TABLE Dersler (
+    DersID INT PRIMARY KEY,
+    DersAdi VARCHAR(100),
+    OgretmenID INT,
+    FOREIGN KEY (OgretmenID) REFERENCES Ogretmenler(OgretmenID)
+);
+
+CREATE TABLE Notlar (
+    NotID INT PRIMARY KEY,
+    OgrenciID INT,
+    DersID INT,
+    Vize VARCHAR(20),
+    Final VARCHAR(20),
+    NotDegeri FLOAT,
+    FOREIGN KEY (OgrenciID) REFERENCES Ogrenciler(OgrenciID),
+    FOREIGN KEY (DersID) REFERENCES Dersler(DersID)
+);
