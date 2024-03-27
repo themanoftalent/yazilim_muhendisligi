@@ -1,0 +1,71 @@
+
+191502214  MOUAD ASSILA    4. sınıf
+201502204 Ahmed Alhasweh 4. sınıf
+2111502020 Muhammet Akif Akman 3. sınıf
+
+CREATE TABLE Students (
+    StudentID NUMBER PRIMARY KEY,
+    FirstName VARCHAR2(50),
+    LastName VARCHAR2(50),
+    Gender VARCHAR2(10)
+);
+
+CREATE TABLE Teachers (
+    TeacherID NUMBER PRIMARY KEY,
+    FirstName VARCHAR2(50),
+    LastName VARCHAR2(50),
+    Gender VARCHAR2(10),
+    Department VARCHAR2(50)
+);
+
+CREATE TABLE Courses (
+    CourseID NUMBER PRIMARY KEY,
+    CourseName VARCHAR2(100),
+    TeacherID NUMBER,
+    CONSTRAINT fk_teacher FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+);
+CREATE TABLE Enrollment (
+    EnrollmentID NUMBER PRIMARY KEY,
+    StudentID NUMBER,
+    CourseID NUMBER,
+    Grade NUMBER(4,2),
+    CONSTRAINT fk_student FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    CONSTRAINT fk_course FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+
+
+INSERT INTO Students (StudentID, FirstName, LastName, Gender)
+VALUES (1, 'Ali', 'Yılmaz', 'Male'),
+       (2, 'Ayşe', 'Kaya', 'Female'),
+       (3, 'Mehmet', 'Demir', 'Male');
+
+INSERT INTO Teachers (TeacherID, FirstName, LastName, Gender, Department)
+VALUES (1, 'Fatma', 'Yılmaz', 'Female', 'Mathematics'),
+       (2, 'Ahmet', 'Özdemir', 'Male', 'Science'),
+       (3, 'Ayşe', 'Koç', 'Female', 'History');
+
+INSERT INTO Courses (CourseID, CourseName, TeacherID)
+VALUES (1, 'Mathematics 101', 1),
+       (2, 'Biology 101', 2),
+       (3, 'History 101', 3);
+
+INSERT INTO Enrollment (StudentID, CourseID)
+VALUES (1, 1),
+       (2, 2),
+       (3, 3);
+SELECT 
+    s.FirstName AS StudentFirstName, 
+    s.LastName AS StudentLastName, 
+    c.CourseName, 
+    t.FirstName AS TeacherFirstName, 
+    t.LastName AS TeacherLastName
+FROM 
+    Students s
+JOIN 
+    Enrollment e ON s.StudentID = e.StudentID
+JOIN 
+    Courses c ON e.CourseID = c.CourseID
+JOIN 
+    Teachers t ON c.TeacherID = t.TeacherID;
+
+
