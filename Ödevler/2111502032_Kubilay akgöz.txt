@@ -1,0 +1,83 @@
+CREATE TABLE DEPARTMAN (
+    disim VARCHAR(15) NOT NULL,
+    dnumarasi INT NOT NULL,
+    mng_id CHAR(9),
+    mng_baslamatarihi DATE,
+    PRIMARY KEY (dnumarasi),
+    UNIQUE (disim)
+);
+
+CREATE TABLE CALISANLAR (
+    isim VARCHAR(15) NOT NULL,
+    soyisim VARCHAR(15) NOT NULL,
+    calisan_id CHAR(9) NOT NULL,
+    dogumgunu DATE,
+    adres VARCHAR(30),
+    cinsiyet CHAR,
+    maas DECIMAL(10,2),
+    deptNumara INT NOT NULL,
+    PRIMARY KEY (calisan_id),
+    FOREIGN KEY (deptNumara) REFERENCES DEPARTMAN (dnumarasi)
+);
+
+CREATE TABLE PROJE (
+    projeismi VARCHAR(15) NOT NULL,
+    proje_id INT NOT NULL,
+    proje_yeri VARCHAR(15),
+    deptNumara INT NOT NULL,
+    PRIMARY KEY (proje_id),
+    UNIQUE (projeismi),
+    FOREIGN KEY (deptNumara) REFERENCES DEPARTMAN (dnumarasi)
+);
+
+CREATE TABLE PROJEBILGI (
+    calisan_id CHAR(9) NOT NULL,
+    proje_id INT NOT NULL,
+    saat DECIMAL(3,1) NOT NULL,
+    PRIMARY KEY (calisan_id, proje_id),
+    FOREIGN KEY (calisan_id) REFERENCES CALISANLAR (calisan_id),
+    FOREIGN KEY (proje_id) REFERENCES PROJE (proje_id)
+);
+
+CREATE TABLE DIGERODEMELER (
+    calisan_id CHAR(9) NOT NULL,
+    ad VARCHAR(15) NOT NULL,
+    cinsiyet CHAR,
+    dogumgunu DATE,
+    relationship VARCHAR(8),
+    PRIMARY KEY (calisan_id, ad),
+    FOREIGN KEY (calisan_id) REFERENCES CALISANLAR (calisan_id)
+);
+
+ALTER TABLE DEPARTMAN ADD CONSTRAINT fk_manager FOREIGN KEY (mng_id) REFERENCES CALISANLAR(calisan_id);
+
+INSERT INTO DEPARTMAN VALUES ('Araştırma', 5, null, '1978-05-22');
+INSERT INTO DEPARTMAN VALUES ('Yönetim', 4, null, '1985-01-01');
+INSERT INTO DEPARTMAN VALUES ('Merkez', 1, null, '1971-06-19');
+
+INSERT INTO CALISANLAR VALUES ('Olcay', 'Berkil', '987654321', '1931-06-20', 'Istanbul', 'E', 43000, 4);
+INSERT INTO CALISANLAR VALUES ('Ahmet', 'Kutu', '123456789', '1955-01-09', 'Istanbul', 'E', 30000, 5);
+INSERT INTO CALISANLAR VALUES ('Ömer', 'Yılmaz', '999887777', '1958-07-19', 'Giresun', 'E', 25000, 4);
+INSERT INTO CALISANLAR VALUES ('Umut', 'Dogan', '666884444', '1952-09-15', 'Gaziantep', 'E', 38000, 5);
+INSERT INTO CALISANLAR VALUES ('Talha', 'Bodur', '453453453', '1962-07-31', 'Afyon', 'K', 25000, 5);
+INSERT INTO CALISANLAR VALUES ('Enes', 'Özöndel', '987987987', '1959-03-29', 'Istanbul', 'E', 25000, 4);
+
+UPDATE DEPARTMAN SET mng_id = '333445555' WHERE disim = 'Araştırma';
+UPDATE DEPARTMAN SET mng_id = '987654321' WHERE disim = 'Yönetim';
+UPDATE DEPARTMAN SET mng_id = '888665555' WHERE disim = 'Merkez';
+
+INSERT INTO PROJE VALUES ('ProjeX', 1, 'Istanbul', 5);
+INSERT INTO PROJE VALUES ('ProjeY', 2, 'Ankara', 5);
+INSERT INTO PROJE VALUES ('ProjeZ', 3, 'Bursa', 5);
+
+INSERT INTO PROJEBILGI VALUES ('123456789', 1, 32.5);
+INSERT INTO PROJEBILGI VALUES ('123456789', 2, 7.5);
+INSERT INTO PROJEBILGI VALUES ('666884444', 3, 40);
+INSERT INTO PROJEBILGI VALUES ('453453453', 1, 40);
+INSERT INTO PROJEBILGI VALUES ('453453453', 2, 40);
+INSERT INTO PROJEBILGI VALUES ('333445555', 2, 10);
+INSERT INTO PROJEBILGI VALUES ('333445555', 3, 10);
+INSERT INTO PROJEBILGI VALUES ('333445555', 10, 10);
+
+INSERT INTO DIGERODEMELER VALUES ('333445555', 'Olcay', 'E', '1958-05-03', 'EŞ');
+INSERT INTO DIGERODEMELER VALUES ('987654321', 'Talha', 'K', '1942-02-20', 'EŞ');
