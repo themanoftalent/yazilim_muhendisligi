@@ -1,0 +1,105 @@
+CREATE DATABASE şirket
+
+CREATE TABLE Birim (
+    birim_id INT PRIMARY KEY not null,
+    bina_no VARCHAR(20) NOT NULL,
+    birim_kapi_no VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE Unvan (
+    unvan_id INT PRIMARY KEY NOT NULL ,
+    unvan_ad VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Il (
+    il_id INT PRIMARY KEY NOT NULL,
+    il_ad VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Ilce (
+    ilce_id INT PRIMARY KEY NOT NULL,
+    ilce_ad VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Personel (
+    personel_id INT PRIMARY KEY NOT NULL,
+    ad VARCHAR(50) NOT NULL,
+    soyad VARCHAR(50) NOT NULL,
+    birim_id INT NOT NULL,
+    maas DECIMAL(10, 2) NOT NULL,
+    unvan_id INT NOT NULL,
+    il_id INT NOT NULL,
+    ilce_id INT NOT NULL,
+    FOREIGN KEY (birim_id) REFERENCES Birim(birim_id),
+    FOREIGN KEY (unvan_id) REFERENCES Unvan(unvan_id),
+    FOREIGN KEY (il_id) REFERENCES Il(il_id),
+    FOREIGN KEY (ilce_id) REFERENCES Ilce(ilce_id)
+);
+
+
+INSERT INTO Birim (birim_id, bina_no, birim_kapi_no) VALUES
+(1, 'Bina 1', 'Kapı 1'),
+(2, 'Bina 2', 'Kapı 2'),
+(3, 'Bina 3', 'Kapı 3'),
+(4, 'Bina 4', 'Kapı 4'),
+(5, 'Bina 5', 'Kapı 5'),
+(6, 'Bina 6', 'Kapı 6'),
+(7, 'Bina 7', 'Kapı 7'),
+(8, 'Bina 8', 'Kapı 8'),
+(9, 'Bina 9', 'Kapı 9'),
+(10, 'Bina 10', 'Kapı 10');
+
+
+INSERT INTO Unvan (unvan_id, unvan_ad) VALUES
+(1, 'Müdür'),
+(2, 'Müdür Yardımcısı'),
+(3, 'Uzman'),
+(4, 'Personel'),
+(5, 'Stajyer'),
+(6, 'Teknik Uzman'),
+(7, 'Mühendis'),
+(8, 'Yönetici'),
+(9, 'Satış Temsilcisi'),
+(10, 'Pazarlama Uzmanı');
+
+INSERT INTO Il (il_id, il_ad) VALUES
+(1, 'İstanbul'),
+(2, 'Ankara'),
+(3, 'İzmir'),
+(4, 'Bursa'),
+(5, 'Antalya'),
+(6, 'Adana'),
+(7, 'Konya'),
+(8, 'Gaziantep'),
+(9, 'Mersin'),
+(10, 'Diyarbakır');
+
+
+INSERT INTO Ilce (ilce_id, ilce_ad) VALUES
+(1, 'Kadıköy'),
+(2, 'Çankaya'),
+(3, 'Konak'),
+(4, 'Osmangazi'),
+(5, 'Muratpaşa'),
+(6, 'Seyhan'),
+(7, 'Selçuklu'),
+(8, 'Şahinbey'),
+(9, 'Yenişehir'),
+(10, 'Bağlar');
+
+
+INSERT INTO Personel (personel_id, ad, soyad, birim_id, maas, unvan_id, il_id, ilce_id) VALUES
+(1, 'Ahmet', 'Yılmaz', 1, 5000.00, 1, 1, 1),
+(2, 'Ayşe', 'Kaya', 2, 4500.00, 2, 2, 2),
+(3, 'Mehmet', 'Demir', 3, 4000.00, 3, 3, 3),
+(4, 'Fatma', 'Şahin', 4, 3500.00, 4, 4, 4),
+(5, 'Mustafa', 'Kurt', 5, 3000.00, 5, 5, 5),
+(6, 'Zeynep', 'Aydın', 6, 5500.00, 6, 6, 6),
+(7, 'Emre', 'Öztürk', 7, 6000.00, 7, 7, 7),
+(8, 'Deniz', 'Çelik', 8, 6500.00, 8, 8, 8),
+(9, 'Gizem', 'Yıldırım', 9, 7000.00, 9, 9, 9),
+(10, 'Oğuz', 'Koç', 10, 7500.00, 10, 10, 10);
+
+SELECT*FROM tablo_adı
+
+
