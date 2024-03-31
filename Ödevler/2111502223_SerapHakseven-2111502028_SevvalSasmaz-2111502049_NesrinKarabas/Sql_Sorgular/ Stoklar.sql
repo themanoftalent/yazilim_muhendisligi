@@ -1,0 +1,10 @@
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (1, 1, 20, 'A1');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (2, 2, 15, 'A2');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (3, 3, 30, 'B1');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (4, 4, 25, 'B2');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (5, 5, 10, 'C1');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (6, 6, 5, 'C2');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (7, 7, 12, 'D1');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (8, 8, 18, 'D2');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (9, 9, 22, 'E1');
+INSERT INTO Stoklar (StokID, KitapID, Miktar, RafKonumu) VALUES (10, 10, 8, 'E2');

@@ -1,0 +1,10 @@
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (1, 'Roman');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (2, 'Bilim Kurgu');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (3, 'Tarih');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (4, 'Felsefe');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (5, 'Biyografi');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (6, 'Çocuk Kitapları');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (7, 'Eğitim');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (8, 'Sağlık');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (9, 'Bilgisayar');
+INSERT INTO Kategoriler (KategoriID, KategoriAdi) VALUES (10, 'Sanat');
